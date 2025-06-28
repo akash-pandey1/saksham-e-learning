@@ -1,0 +1,317 @@
+<div class="course-detail-page" *ngIf="course">
+  <!-- Course Header -->
+  <div class="course-header">
+    <div class="container">
+      <div class="course-header-content">
+        <div class="course-info">
+          <div class="course-breadcrumb">
+            <a routerLink="/courses">Courses</a>
+            <span class="separator">/</span>
+            <span>{{ course?.category }}</span>
+            <span class="separator">/</span>
+            <span>{{ course?.title }}</span>
+          </div>
+          
+          <h1 class="course-title">{{ course?.title }}</h1>
+          <p class="course-subtitle">{{ course?.subtitle }}</p>
+          
+          <div class="course-meta">
+            <div class="rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-text">{{ course?.rating }} ({{ course?.reviews }} reviews)</span>
+            </div>
+            <div class="students">
+              <span class="student-count">{{ course?.students?.toLocaleString() }} students enrolled</span>
+            </div>
+            <div class="last-updated">
+              <span>Last updated {{ course?.lastUpdated }}</span>
+            </div>
+          </div>
+          
+          <div class="course-instructor">
+            <img [src]="course?.instructor?.avatar" [alt]="course?.instructor?.name" class="instructor-avatar">
+            <div class="instructor-info">
+              <span class="instructor-label">Created by</span>
+              <span class="instructor-name">{{ course?.instructor?.name }}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="course-preview">
+          <div class="video-container" *ngIf="safeVideoUrl">
+            <iframe [src]="safeVideoUrl" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Course Content -->
+  <div class="course-content">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Main Content -->
+        <div class="main-content">
+          <!-- Course Tabs -->
+          <div class="course-tabs">
+            <button 
+              class="tab-btn" 
+              [class.active]="selectedTab === 'overview'"
+              (click)="selectTab('overview')">
+              Overview
+            </button>
+            <button 
+              class="tab-btn" 
+              [class.active]="selectedTab === 'curriculum'"
+              (click)="selectTab('curriculum')">
+              Curriculum
+            </button>
+            <button 
+              class="tab-btn" 
+              [class.active]="selectedTab === 'instructor'"
+              (click)="selectTab('instructor')">
+              Instructor
+            </button>
+            <button 
+              class="tab-btn" 
+              [class.active]="selectedTab === 'reviews'"
+              (click)="selectTab('reviews')">
+              Reviews
+            </button>
+          </div>
+
+          <!-- Tab Content -->
+          <div class="tab-content">
+            <!-- Overview Tab -->
+            <div class="tab-panel" *ngIf="selectedTab === 'overview'">
+              <div class="section">
+                <h3>What you'll learn</h3>
+                <div class="learning-points">
+                  <div class="learning-point" *ngFor="let point of course?.whatYouWillLearn">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>{{ point }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section">
+                <h3>Requirements</h3>
+                <ul class="requirements-list">
+                  <li *ngFor="let requirement of course?.requirements">{{ requirement }}</li>
+                </ul>
+              </div>
+
+              <div class="section">
+                <h3>Description</h3>
+                <p class="course-description">{{ course?.description }}</p>
+              </div>
+
+              <div class="section">
+                <h3>Who this course is for</h3>
+                <ul class="audience-list">
+                  <li *ngFor="let audience of course?.targetAudience">{{ audience }}</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Curriculum Tab -->
+            <div class="tab-panel" *ngIf="selectedTab === 'curriculum'">
+              <div class="curriculum-header">
+                <h3>Course Content</h3>
+                <div class="curriculum-stats">
+                  <span>{{ course?.lessons }} lessons</span>
+                  <span>{{ course?.duration }}</span>
+                </div>
+              </div>
+              
+              <div class="curriculum-sections">
+                <div class="curriculum-section" *ngFor="let section of course?.curriculum">
+                  <div class="section-header">
+                    <h4>{{ section.title }}</h4>
+                    <div class="section-meta">
+                      <span>{{ section.lessons }} lessons</span>
+                      <span>{{ section.duration }}</span>
+                    </div>
+                  </div>
+                  <div class="section-topics">
+                    <div class="topic" *ngFor="let topic of section.topics">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span>{{ topic }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Instructor Tab -->
+            <div class="tab-panel" *ngIf="selectedTab === 'instructor'">
+              <div class="instructor-profile">
+                <div class="instructor-header">
+                  <img [src]="course?.instructor?.avatar" [alt]="course?.instructor?.name" class="instructor-avatar-large">
+                  <div class="instructor-details">
+                    <h3>{{ course?.instructor?.name }}</h3>
+                    <p class="instructor-title">{{ course?.instructor?.title }}</p>
+                    <div class="instructor-stats">
+                      <div class="stat">
+                        <span class="stat-number">{{ course?.instructor?.rating }}</span>
+                        <span class="stat-label">Instructor Rating</span>
+                      </div>
+                      <div class="stat">
+                        <span class="stat-number">{{ course?.instructor?.students?.toLocaleString() }}</span>
+                        <span class="stat-label">Students</span>
+                      </div>
+                      <div class="stat">
+                        <span class="stat-number">{{ course?.instructor?.courses }}</span>
+                        <span class="stat-label">Courses</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="instructor-bio">
+                  <h4>About {{ course?.instructor?.name }}</h4>
+                  <p>{{ course?.instructor?.bio }}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reviews Tab -->
+            <div class="tab-panel" *ngIf="selectedTab === 'reviews'">
+              <div class="reviews-header">
+                <h3>Student Reviews</h3>
+                <div class="overall-rating">
+                  <div class="rating-display">
+                    <span class="rating-number">{{ course?.rating }}</span>
+                    <span class="stars-large">⭐⭐⭐⭐⭐</span>
+                    <span class="rating-label">Course Rating</span>
+                  </div>
+                  <div class="rating-breakdown">
+                    <div class="rating-bar">
+                      <span>5 stars</span>
+                      <div class="bar">
+                        <div class="bar-fill" style="width: 75%"></div>
+                      </div>
+                      <span>75%</span>
+                    </div>
+                    <div class="rating-bar">
+                      <span>4 stars</span>
+                      <div class="bar">
+                        <div class="bar-fill" style="width: 20%"></div>
+                      </div>
+                      <span>20%</span>
+                    </div>
+                    <div class="rating-bar">
+                      <span>3 stars</span>
+                      <div class="bar">
+                        <div class="bar-fill" style="width: 3%"></div>
+                      </div>
+                      <span>3%</span>
+                    </div>
+                    <div class="rating-bar">
+                      <span>2 stars</span>
+                      <div class="bar">
+                        <div class="bar-fill" style="width: 1%"></div>
+                      </div>
+                      <span>1%</span>
+                    </div>
+                    <div class="rating-bar">
+                      <span>1 star</span>
+                      <div class="bar">
+                        <div class="bar-fill" style="width: 1%"></div>
+                      </div>
+                      <span>1%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="reviews-list">
+                <div class="review-card" *ngFor="let review of course?.reviewList">
+                  <div class="review-header">
+                    <div class="reviewer-info">
+                      <div class="reviewer-avatar">{{ review.name.charAt(0) }}</div>
+                      <div class="reviewer-details">
+                        <span class="reviewer-name">{{ review.name }}</span>
+                        <div class="review-rating">
+                          <span class="stars">⭐⭐⭐⭐⭐</span>
+                          <span class="review-date">{{ review.date }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="review-text">{{ review.text }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="course-card">
+            <div class="course-image">
+              <img [src]="course?.image" [alt]="course?.title">
+              <div class="play-overlay">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+            
+            <div class="course-pricing">
+              <div class="price">
+                <span class="current-price">{{ course?.currency }}{{ course?.price?.toLocaleString() }}</span>
+                <span class="original-price">{{ course?.currency }}{{ course?.originalPrice?.toLocaleString() }}</span>
+                <span class="discount">50% off</span>
+              </div>
+            </div>
+            
+            <div class="button-container">
+              <button class="btn btn-primary btn-large" (click)="enrollCourse()">
+                Enroll Now
+              </button>
+            </div>
+            
+            <div class="course-features">
+              <h4>This course includes:</h4>
+              <ul class="features-list">
+                <li *ngFor="let feature of course?.features">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  <span>{{ feature }}</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="course-info-summary">
+              <div class="info-item">
+                <span class="label">Duration:</span>
+                <span class="value">{{ course?.duration }}</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Lessons:</span>
+                <span class="value">{{ course?.lessons }}</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Level:</span>
+                <span class="value">{{ course?.level }}</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Language:</span>
+                <span class="value">{{ course?.language }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

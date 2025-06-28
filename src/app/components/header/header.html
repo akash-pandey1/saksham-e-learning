@@ -1,0 +1,47 @@
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-brand">
+        <a routerLink="/" class="logo">
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="logo-text">Saksham</span>
+        </a>
+      </div>
+      
+      <div class="nav-menu">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home</a>
+        <a routerLink="/courses" routerLinkActive="active" class="nav-link">Courses</a>
+        <a routerLink="/about" routerLinkActive="active" class="nav-link">About</a>
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
+      </div>
+      
+      <div class="nav-actions">
+        <a routerLink="/login" class="btn btn-secondary">Login</a>
+        <a routerLink="/signup" class="btn btn-primary">Sign Up</a>
+      </div>
+      
+      <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </nav>
+    
+    <div class="mobile-menu" [class.active]="isMobileMenuOpen">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mobile-nav-link">Home</a>
+      <a routerLink="/courses" routerLinkActive="active" class="mobile-nav-link">Courses</a>
+      <a routerLink="/about" routerLinkActive="active" class="mobile-nav-link">About</a>
+      <a routerLink="/contact" routerLinkActive="active" class="mobile-nav-link">Contact</a>
+      <div class="mobile-actions">
+        <a routerLink="/login" class="btn btn-secondary">Login</a>
+        <a routerLink="/signup" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</header>

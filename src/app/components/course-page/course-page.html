@@ -1,0 +1,145 @@
+<div class="course-page">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Explore Our Courses</h1>
+        <p class="hero-description">
+          Discover thousands of courses from top instructors around the world. 
+          Start learning today and transform your career.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card" *ngFor="let stat of courseStats">
+          <div class="stat-number">{{ stat.number }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters Section -->
+  <section class="filters">
+    <div class="container">
+      <div class="filters-content">
+        <!-- Search -->
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input 
+            type="text" 
+            placeholder="Search courses, instructors, or topics..."
+            [value]="searchQuery"
+            (input)="updateSearch($event)"
+            class="search-input">
+        </div>
+
+        <!-- Category Filters -->
+        <div class="category-filters">
+          <button 
+            *ngFor="let category of categories"
+            class="category-btn"
+            [class.active]="selectedCategory === category"
+            (click)="selectCategory(category)">
+            {{ category }}
+          </button>
+        </div>
+
+        <!-- Sort -->
+        <div class="sort-controls">
+          <label for="sort-select">Sort by:</label>
+          <select 
+            id="sort-select"
+            [value]="sortBy"
+            (change)="updateSort($event)"
+            class="sort-select">
+            <option value="popular">Most Popular</option>
+            <option value="rating">Highest Rated</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="newest">Newest</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Grid -->
+  <section class="courses">
+    <div class="container">
+      <div class="courses-header">
+        <h2>{{ filteredCourses.length }} Courses Found</h2>
+        <p>Showing results for your search</p>
+      </div>
+
+      <div class="courses-grid">
+        <div class="course-card" *ngFor="let course of filteredCourses">
+          <div class="course-image">
+            <img [src]="course.image" [alt]="course.title">
+            <div class="course-overlay">
+              <a [routerLink]="['/course', course.id]" class="btn btn-primary">View Course</a>
+            </div>
+            <div class="course-badges">
+              <span class="badge hot" *ngIf="course.isHot">Hot</span>
+              <span class="badge new" *ngIf="course.isNew">New</span>
+            </div>
+          </div>
+          
+          <div class="course-content">
+            <div class="course-category">{{ course.category }}</div>
+            <h3 class="course-title">
+              <a [routerLink]="['/course', course.id]">{{ course.title }}</a>
+            </h3>
+            <p class="course-description">{{ course.description }}</p>
+            
+            <div class="course-instructor">
+              <img [src]="course.instructor.avatar" [alt]="course.instructor.name" class="instructor-avatar">
+              <div class="instructor-info">
+                <span class="instructor-name">{{ course.instructor.name }}</span>
+                <span class="instructor-title">{{ course.instructor.title }}</span>
+              </div>
+            </div>
+            
+            <div class="course-meta">
+              <div class="rating">
+                <span class="stars">⭐⭐⭐⭐⭐</span>
+                <span class="rating-text">{{ course.rating }} ({{ course.reviews.toLocaleString() }})</span>
+              </div>
+              <div class="course-stats">
+                <span>{{ course.lessons }} lessons</span>
+                <span>{{ course.duration }}</span>
+              </div>
+            </div>
+            
+            <div class="course-pricing">
+              <div class="price">
+                <span class="current-price">{{ course.currency }}{{ course.price.toLocaleString() }}</span>
+                <span class="original-price">{{ course.currency }}{{ course.originalPrice.toLocaleString() }}</span>
+              </div>
+              <a [routerLink]="['/course', course.id]" class="btn btn-primary btn-small">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Results -->
+      <div class="no-results" *ngIf="filteredCourses.length === 0">
+        <div class="no-results-content">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>No courses found</h3>
+          <p>Try adjusting your search criteria or browse all courses</p>
+          <button class="btn btn-primary" (click)="selectedCategory = 'All'; searchQuery = ''">View All Courses</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

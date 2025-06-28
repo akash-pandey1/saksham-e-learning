@@ -1,0 +1,154 @@
+<div class="about-page">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">About Saksham</h1>
+        <p class="hero-description">
+          Founded by Akash Pandey, Saksham has become a trusted platform for online learning.
+          We're dedicated to making quality education accessible to everyone, everywhere.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission">
+    <div class="container">
+      <div class="mission-content">
+        <div class="mission-text">
+          <h2>Our Mission</h2>
+          <p>
+            At Saksham, we believe that education is the key to unlocking human potential. 
+            Our mission is to provide accessible, high-quality online education that empowers 
+            individuals to achieve their career goals and personal aspirations.
+          </p>
+          <p>
+            Founded by Akash Pandey in 2020, Saksham has grown from a small startup to a 
+            global learning platform serving students in over 150 countries. We're committed 
+            to making education accessible, affordable, and effective for everyone.
+          </p>
+        </div>
+        <div class="mission-image">
+          <div class="image-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card" *ngFor="let stat of stats">
+          <div class="stat-number">{{ stat.number }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="values">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Values</h2>
+        <p>The principles that guide everything we do at Saksham</p>
+      </div>
+      
+      <div class="values-grid">
+        <div class="value-card" *ngFor="let value of values">
+          <div class="value-icon">{{ value.icon }}</div>
+          <h3>{{ value.title }}</h3>
+          <p>{{ value.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team">
+    <div class="container">
+      <div class="section-header">
+        <h2>Meet Our Team</h2>
+        <p>The passionate educators and professionals behind Saksham</p>
+      </div>
+      
+      <div class="team-grid">
+        <div class="team-member" *ngFor="let member of teamMembers">
+          <div class="member-image">
+            <img [src]="member.image" [alt]="member.name">
+          </div>
+          <div class="member-info">
+            <h3>{{ member.name }}</h3>
+            <p class="member-role">{{ member.role }}</p>
+            <p class="member-bio">{{ member.bio }}</p>
+            <div class="member-skills">
+              <span class="skill-tag" *ngFor="let skill of member.skills">{{ skill }}</span>
+            </div>
+            <div class="member-social">
+              <a [href]="member.social.linkedin" class="social-link">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a [href]="member.social.github" class="social-link">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 19C4 20.5 4 16.5 2 16M16 22V18.13C16.0375 17.6532 15.9731 17.1738 15.811 16.7238C15.6489 16.2738 15.3929 15.8634 15.06 15.52C18.2 15.17 21.5 13.98 21.5 8.52C21.4997 7.12383 21.9627 5.7812 22.796 4.61C22.216 3.331 21.216 3.331 21.216 3.331C20.016 2.978 18.784 2.978 17.584 3.331C16.584 3.331 15.584 3.331 15.004 4.61C15.8372 5.7812 16.3002 7.12383 16.3 8.52C16.3 13.97 13 15.16 9.86 15.55C9.53 15.89 9.28 16.295 9.12 16.74C8.96 17.185 8.9 17.66 8.94 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a [href]="member.social.twitter" class="social-link">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M23 3C22.0424 3.67548 20.9821 4.19211 19.86 4.53C19.2577 3.83751 18.4573 3.34669 17.567 3.12393C16.6767 2.90116 15.7395 2.9572 14.8821 3.28445C14.0247 3.61171 13.2884 4.19445 12.773 4.95376C12.2575 5.71308 11.9877 6.62234 12 7.55V8.55C10.2426 8.58561 8.50127 8.19587 6.93101 7.42045C5.36074 6.64504 4.01032 5.50525 3 4.1C3 4.1 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.5C20.9991 7.22145 20.9723 6.94359 20.92 6.67C21.9406 5.66349 22.6608 4.39271 23 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Journey</h2>
+        <p>Key milestones in Saksham's growth and development</p>
+      </div>
+      
+      <div class="timeline-container">
+        <div class="timeline-item" *ngFor="let item of timeline">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">{{ item.year }}</div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Start Learning?</h2>
+        <p>Join thousands of students who have transformed their careers with Saksham</p>
+        <div class="cta-actions">
+          <a routerLink="/courses" class="btn btn-primary btn-large">Explore Courses</a>
+          <a routerLink="/contact" class="btn btn-secondary btn-large">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
