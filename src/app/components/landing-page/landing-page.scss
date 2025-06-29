@@ -4,7 +4,10 @@
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.6) 0%, rgba(37, 99, 235, 0.5) 100%), url('/landing_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--white);
   padding: var(--spacing-20) 0;
   position: relative;
@@ -19,7 +22,7 @@
   right: 0;
   bottom: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .hero-content {
@@ -36,6 +39,8 @@
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: var(--spacing-6);
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .gradient-text {
@@ -43,13 +48,15 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: none;
 }
 
 .hero-description {
   font-size: var(--font-size-lg);
   line-height: 1.7;
   margin-bottom: var(--spacing-8);
-  opacity: 0.9;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .hero-actions {
@@ -77,12 +84,14 @@
 .stat-number {
   font-size: var(--font-size-2xl);
   font-weight: 700;
-  color: var(--accent-color);
+  color: #fbbf24;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .stat-label {
   font-size: var(--font-size-sm);
-  opacity: 0.8;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .hero-image {
@@ -118,10 +127,10 @@
 }
 
 .play-button {
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   background: var(--primary-color);
-  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
