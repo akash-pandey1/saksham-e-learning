@@ -19,9 +19,6 @@ export class LandingPageComponent {
       image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop',
       rating: 4.9,
       reviews: 3247,
-      price: 2999,
-      originalPrice: 5999,
-      currency: '₹',
       lessons: 95,
       duration: '25 hours'
     },
@@ -33,9 +30,6 @@ export class LandingPageComponent {
       image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=250&fit=crop',
       rating: 4.8,
       reviews: 2893,
-      price: 3999,
-      originalPrice: 7999,
-      currency: '₹',
       lessons: 156,
       duration: '38 hours'
     },
@@ -47,9 +41,6 @@ export class LandingPageComponent {
       image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop',
       rating: 4.7,
       reviews: 2234,
-      price: 2499,
-      originalPrice: 4999,
-      currency: '₹',
       lessons: 142,
       duration: '35 hours'
     },
@@ -61,9 +52,6 @@ export class LandingPageComponent {
       image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=250&fit=crop',
       rating: 4.6,
       reviews: 1987,
-      price: 1999,
-      originalPrice: 3999,
-      currency: '₹',
       lessons: 128,
       duration: '28 hours'
     },
@@ -75,9 +63,6 @@ export class LandingPageComponent {
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop',
       rating: 4.8,
       reviews: 2654,
-      price: 3499,
-      originalPrice: 6999,
-      currency: '₹',
       lessons: 198,
       duration: '45 hours'
     },
@@ -89,9 +74,6 @@ export class LandingPageComponent {
       image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop',
       rating: 4.5,
       reviews: 1876,
-      price: 1799,
-      originalPrice: 3599,
-      currency: '₹',
       lessons: 115,
       duration: '25 hours'
     }

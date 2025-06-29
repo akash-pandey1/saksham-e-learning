@@ -46,7 +46,6 @@
                 <p>Master essential computer skills and internet navigation</p>
                 <div class="course-meta">
                   <span class="rating">⭐ 4.9 (3.2k reviews)</span>
-                  <span class="price">₹2,999</span>
                 </div>
               </div>
             </div>
@@ -62,7 +61,7 @@
       <div class="section-header">
         <h2 class="section-title">Why Choose Saksham?</h2>
         <p class="section-description">
-          Discover how we're bridging the digital divide and empowering individuals with essential tech skills
+          Discover how we're bridging the digital divide and empowering individuals with essential tech skills - completely free
         </p>
       </div>
       
@@ -123,7 +122,7 @@
       <div class="section-header">
         <h2 class="section-title">Popular Courses</h2>
         <p class="section-description">
-          Master essential digital skills with our most popular courses designed for the modern workforce
+          Master essential digital skills with our most popular courses designed for the modern workforce - all free!
         </p>
       </div>
       
@@ -150,10 +149,6 @@
                 <span class="stars">⭐⭐⭐⭐⭐</span>
                 <span class="rating-text">{{ course.rating }} ({{ course.reviews }} reviews)</span>
               </div>
-              <div class="course-price">
-                <span class="current-price">{{ course.currency }}{{ course.price }}</span>
-                <span class="original-price" *ngIf="course.originalPrice">{{ course.currency }}{{ course.originalPrice }}</span>
-              </div>
             </div>
             <div class="course-footer">
               <div class="course-stats">
@@ -173,7 +168,7 @@
                   {{ course.duration }}
                 </span>
               </div>
-              <a [routerLink]="['/course', course.id]" class="btn btn-primary">Enroll Now</a>
+              <a [routerLink]="['/course', course.id]" class="btn btn-primary">Enroll Free</a>
             </div>
           </div>
         </div>
@@ -219,7 +214,7 @@
       <div class="cta-content">
         <h2 class="cta-title">Ready to Empower Your Digital Future?</h2>
         <p class="cta-description">
-          Join thousands of learners who are already building their digital skills with Saksham
+          Join thousands of learners who are already building their digital skills with Saksham - completely free!
         </p>
         <div class="cta-actions">
           <a routerLink="/signup" class="btn btn-primary btn-large">Get Started Free</a>

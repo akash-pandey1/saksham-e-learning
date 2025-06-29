@@ -29,9 +29,6 @@ export class CourseDetail implements OnInit {
       students: 15420,
       courses: 12
     },
-    price: 2999,
-    originalPrice: 5999,
-    currency: '₹',
     rating: 4.9,
     reviews: 3247,
     students: 15420,
@@ -44,11 +41,11 @@ export class CourseDetail implements OnInit {
     image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop',
     videoPreview: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     features: [
+      'Completely free - no hidden costs',
       'Lifetime access to course content',
       'Certificate of completion',
       'Downloadable resources',
       'Mobile and TV access',
-      '30-day money-back guarantee',
       'Instructor Q&A support'
     ],
     whatYouWillLearn: [
